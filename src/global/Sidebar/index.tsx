@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import type { ISidebarProps, NavLinkProps } from "../../utils/types";
 import { navLinks } from "../../constants";
-
+import logo from "../../assets/PNGs/logo.png"
 const NavLink: React.FC<NavLinkProps> = ({ to, children, className, onClick }) => {
   const location = useLocation();
   const isActive = location.pathname === to;
@@ -50,11 +50,12 @@ const Sidebar: React.FC<ISidebarProps> = ({
               : "-translate-x-full w-64"
           }`}
       >
-        <div className="flex items-center gap-2 px-8 py-8">
+        <div className="flex items-center gap-2 pb-8">
           <NavLink to="/" onClick={() => handleSidebarItemClick("/")}>
-            <div className="flex items-center">
-              <span className="text-2xl font-semibold text-gray-300">
-                Logo TRIPPPLE              </span>
+            <div className="flex items-center ">
+              {/* <span className="text-2xl font-semibold text-gray-300">
+                Logo TRIPPPLE              </span> */}
+             <img src={logo} alt="Logo" className="object-cover" />
             </div>
           </NavLink>
         </div>
