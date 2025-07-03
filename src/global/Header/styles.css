@@ -1,0 +1,9 @@
+.width-maker {
+    width: 100%;
+}
+
+@media screen and (min-width: 1024px) {
+    .width-maker{
+        width: calc(100% - 256px);
+    }
+}
