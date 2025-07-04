@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { User, Settings, LogOut, Home, ChevronDown, Search, Menu, X } from 'lucide-react';
+import { User, Settings, Home, ChevronDown, Search, Menu, X } from 'lucide-react';
+import { IoMdLogIn } from "react-icons/io";
 import Logo from "../../../assets/PNGs/logo.png";
 import { Link } from 'react-router-dom';
 import { categories } from '../../../constants';
@@ -13,9 +14,9 @@ const Navbar: React.FC = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     const profileMenuItems = [
-        { icon: Home, label: "Dashboard", route: "/dashboard" },
-        { icon: Settings, label: "Settings", route: "/settings" },
-        { icon: LogOut, label: "Logout", route: "/logout" },
+        { icon: Home, label: "Dashboard", route: "/store" },
+        { icon: Settings, label: "Settings", route: "/" },
+        { icon: IoMdLogIn, label: "Login", route: "/signin" },
     ];
 
     const handleProfileClick = () => {
@@ -119,7 +120,7 @@ const Navbar: React.FC = () => {
                         </div>
 
                         {/* Right side - Profile */}
-                        <div className="relative">
+                        <div className="relative px-2">
                             <button
                                 onClick={handleProfileClick}
                                 className="flex items-center space-x-2 p-2 rounded-full hover:bg-gray-800 transition-colors duration-200"
@@ -139,14 +140,16 @@ const Navbar: React.FC = () => {
                                         className="absolute right-0 mt-2 w-48 bg-white/90 rounded-md shadow-lg py-1 z-50"
                                     >
                                         {profileMenuItems.map((item, index) => (
-                                            <button
-                                                key={index}
-                                                onClick={() => handleMenuItemClick(item.route)}
-                                                className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left transition-colors duration-150"
-                                            >
-                                                <item.icon size={16} className="mr-3" />
-                                                {item.label}
-                                            </button>
+                                            <Link to={item.route} key={index}>
+                                                <button
+                                                    key={index}
+                                                    onClick={() => handleMenuItemClick(item.route)}
+                                                    className="flex cursor-pointer items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left transition-colors duration-150"
+                                                >
+                                                    <item.icon size={16} className="mr-3" />
+                                                    {item.label}
+                                                </button>
+                                            </Link>
                                         ))}
                                     </motion.div>
                                 )}

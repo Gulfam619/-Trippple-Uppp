@@ -53,9 +53,7 @@ const Sidebar: React.FC<ISidebarProps> = ({
         <div className="flex items-center gap-2 pb-8">
           <NavLink to="/" onClick={() => handleSidebarItemClick("/")}>
             <div className="flex items-center ">
-              {/* <span className="text-2xl font-semibold text-gray-300">
-                Logo TRIPPPLE              </span> */}
-             <img src={logo} alt="Logo" className="object-cover" />
+              <img src={logo} alt="Logo" className="object-cover" />
             </div>
           </NavLink>
         </div>
@@ -70,7 +68,7 @@ const Sidebar: React.FC<ISidebarProps> = ({
                       to={link.to}
                       onClick={() => handleSidebarItemClick(link.to)}
                       className=
-                      "text-gray-400 hover:text-gray-300 px-4 py-2.5 rounded-full flex items-center gap-3"
+                      "text-gray-400 hover:text-gray-300 px-4 py-2.5  flex items-center gap-3"
 
                     >
                       <span className="w-5 h-5">{link.icon}</span>

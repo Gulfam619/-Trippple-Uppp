@@ -3,7 +3,6 @@ import { Outlet, useLocation } from "react-router-dom";
 import Sidebar from "../global/Sidebar";
 import Header from "../global/Header";
 import Navbar from "../components/HomeComponents/Navbar";
-// import Navbar from "../global/Navbar";
 
 const DefaultLayout = () => {
     const [sidebarDesktopOpen, setSidebarDesktopOpen] = useState(true);
@@ -11,11 +10,9 @@ const DefaultLayout = () => {
 
     const location = useLocation();
 
-    // Auth routes where we want to hide everything
     const authRoutes = ["/signin", "/signup", "/forgot-password", "/otp-verify"];
     const isAuthRoute = authRoutes.includes(location.pathname);
 
-    // Home route: only show Navbar
     const isHomePage = location.pathname === "/";
 
     useEffect(() => {

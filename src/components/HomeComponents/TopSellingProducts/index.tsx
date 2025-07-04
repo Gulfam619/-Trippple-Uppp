@@ -36,7 +36,7 @@ const TopSellingProducts: React.FC = () => {
                         <div className="mt-auto">
                             <button
                                 onClick={() => handleInvestNow(product.name)}
-                                className="w-full bg-black text-white py-2 px-4 rounded-md hover:bg-gray-800 transition-colors duration-200 font-medium"
+                                className="w-full bg-yellow1 text-black py-2 px-4 rounded-md hover:bg-gray-800 transition-colors duration-200 font-medium"
                             >
                                 Invest Now
                             </button>

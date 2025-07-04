@@ -30,7 +30,7 @@ const Header: React.FC<IHeaderProps> = ({
         <div className="flex-grow max-w-md relative">
           <input
             type="search"
-            className="block w-full py-2 px-4 pr-3 border-border-outline border-[1px] rounded-lg text-sm text-black focus:outline-none focus:ring-1 focus:ring-gray-600"
+            className="block w-full py-2 px-4 pr-3 border-[1px] rounded-md text-sm text-black focus:outline-none focus:ring-1 focus:ring-gray-600"
             placeholder="Search"
           />
         </div>

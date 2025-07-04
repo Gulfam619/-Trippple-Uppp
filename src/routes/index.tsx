@@ -10,7 +10,7 @@ const Routing = () => {
     <Routes>
       <Route element={<DefaultLayout />}>
         <Route path="/" element={<Home />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/store" element={<Dashboard />} />
 
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />

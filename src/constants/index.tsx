@@ -1,43 +1,21 @@
-import { MdDashboard } from "react-icons/md";
-import { AiFillDatabase } from "react-icons/ai";
+import { MdDashboard, MdSettings } from "react-icons/md";
 import { FaUser } from "react-icons/fa";
 import type { Product, SidebarNavLinkType } from "../utils/types";
 
 export const navLinks: SidebarNavLinkType[] = [
     {
-        name: "Dashboard",
+        name: "Store",
         to: "/",
         icon: <MdDashboard size={20} />,
     },
     {
-        name: "Page-1",
-        to: "/",
-        icon: <AiFillDatabase size={20} />,
-    },
-    {
-        name: "Page-2",
-        to: "/",
-        icon: <AiFillDatabase size={20} />,
-    },
-    {
-        name: "Page 3 ",
-        to: "/",
-        icon: <AiFillDatabase size={20} />,
-    },
-    {
-        name: "Page 4",
-        to: "/",
-        icon: <AiFillDatabase size={20} />,
-    },
-
-    {
-        name: "Page 5",
-        to: "/",
-        icon: <AiFillDatabase size={20} />,
+        name: "Settings",
+        to: "/store",
+        icon: <MdSettings size={20} />,
     },
     {
         name: "Profile",
-        to: "/",
+        to: "/store",
         icon: <FaUser size={20} />,
     },
 ];
