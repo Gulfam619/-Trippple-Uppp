@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import Sidebar from "../global/Sidebar";
 import Header from "../global/Header";
+import Navbar from "../components/HomeComponents/Navbar";
+// import Navbar from "../global/Navbar";
 
 const DefaultLayout = () => {
     const [sidebarDesktopOpen, setSidebarDesktopOpen] = useState(true);
@@ -9,9 +11,12 @@ const DefaultLayout = () => {
 
     const location = useLocation();
 
-    // Auth routes where we want to hide header and sidebar
+    // Auth routes where we want to hide everything
     const authRoutes = ["/signin", "/signup", "/forgot-password", "/otp-verify"];
-    const hideSidebarAndHeader = authRoutes.includes(location.pathname);
+    const isAuthRoute = authRoutes.includes(location.pathname);
+
+    // Home route: only show Navbar
+    const isHomePage = location.pathname === "/";
 
     useEffect(() => {
         const handleResize = () => {
@@ -44,29 +49,47 @@ const DefaultLayout = () => {
         return () => document.removeEventListener("mousedown", handleClickOutside);
     }, [sidebarMobileOpen]);
 
+    if (isAuthRoute) {
+        // 💥 Auth layout: no sidebar, no header
+        return (
+            <main className="h-full w-full">
+                <Outlet />
+            </main>
+        );
+    }
+
+    if (isHomePage) {
+        // 💥 Home layout: Navbar only
+        return (
+            <div className="h-full w-full">
+                <Navbar />
+                <main className="h-full w-full">
+                    <Outlet />
+                </main>
+            </div>
+        );
+    }
+
+    // 💥 Dashboard layout: sidebar + header
     return (
         <div className="relative overflow-x-hidden">
-            <div className={`flex min-h-screen z-30 ${hideSidebarAndHeader ? "flex-col" : ""}`}>
-                {!hideSidebarAndHeader && (
-                    <Sidebar
+            <div className="flex min-h-screen z-30">
+                <Sidebar
+                    sidebarDesktopOpen={sidebarDesktopOpen}
+                    setSidebarDesktopOpen={setSidebarDesktopOpen}
+                    sidebarMobileOpen={sidebarMobileOpen}
+                    setSidebarMobileOpen={setSidebarMobileOpen}
+                />
+
+                <div className="relative flex flex-1 flex-col lg:ml-64">
+                    <Header
                         sidebarDesktopOpen={sidebarDesktopOpen}
-                        setSidebarDesktopOpen={setSidebarDesktopOpen}
                         sidebarMobileOpen={sidebarMobileOpen}
                         setSidebarMobileOpen={setSidebarMobileOpen}
                     />
-                )}
-
-                <div className={`relative flex flex-1 flex-col ${!hideSidebarAndHeader ? "lg:ml-64" : ""}`}>
-                    {!hideSidebarAndHeader && (
-                        <Header
-                            sidebarDesktopOpen={sidebarDesktopOpen}
-                            sidebarMobileOpen={sidebarMobileOpen}
-                            setSidebarMobileOpen={setSidebarMobileOpen}
-                        />
-                    )}
 
                     <main className="h-full w-full">
-                        <div className={` ${hideSidebarAndHeader ? "w-full" : "w-[95%] py-2  pt-16"} h-full  mx-auto`}>
+                        <div className="w-[95%] py-2 pt-16 mx-auto h-full">
                             <Outlet />
                         </div>
                     </main>

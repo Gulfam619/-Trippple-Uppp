@@ -19,9 +19,10 @@ export interface NavLinkProps {
 
 
 export interface Product {
-    image: string;
+    id: number;
     name: string;
     description: string;
     price: number;
-    rating: number;
+    image: string;
+    sales: number;
 }
