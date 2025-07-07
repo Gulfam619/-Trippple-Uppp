@@ -14,7 +14,7 @@ const CompHeading: React.FC<ComponentHeadingProps> = ({
             <h1 className={`${className} text-2xl md:text-4xl py-4 text-black`}>
                 {heading}
             </h1>
-            <p className={`${className} text-gray1`}>{description}</p>
+            <p className={`${className} text-gray1 pb-1`}>{description}</p>
         </div>
     );
 };
